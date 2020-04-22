@@ -280,11 +280,12 @@
                         <outlet property="UserName" destination="1Iu-mH-unS" id="xSI-b7-1j9"/>
                         <segue destination="RDj-Ns-vcA" kind="show" identifier="Session2AR" id="Hny-3A-IJr"/>
                         <segue destination="aZx-KD-los" kind="show" id="WJe-du-AC5"/>
+                        <segue destination="LCy-HR-q8U" kind="show" identifier="Session2StudentSelect" id="tyi-yA-TSk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSw-6S-Ayx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902.8776978417268" y="133.66834170854273"/>
+            <point key="canvasLocation" x="1903" y="134"/>
         </scene>
         <!--Student Table Controller-->
         <scene sceneID="FIy-EV-dgJ">
@@ -295,20 +296,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pTf-sb-v8C" customClass="StudentCell" customModule="ARApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentCell" id="pTf-sb-v8C" customClass="StudentCell" customModule="ARApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="834" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pTf-sb-v8C" id="MKM-h6-klL">
                                     <rect key="frame" x="0.0" y="0.0" width="834" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HxR-KA-5hx">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HxR-KA-5hx">
                                             <rect key="frame" x="20" y="0.0" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="HxR-KA-5hx" secondAttribute="height" multiplier="1:1" id="cLY-MT-2ti"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgY-CE-8yM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgY-CE-8yM">
                                             <rect key="frame" x="128" y="0.0" width="145" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="145" id="GVb-Kv-gFx"/>
@@ -318,23 +319,33 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-OD-IFN">
-                                            <rect key="frame" x="772" y="0.0" width="42" height="100"/>
+                                            <rect key="frame" x="281" y="0.0" width="42" height="100"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWI-GB-Sxf">
+                                            <rect key="frame" x="688" y="11" width="126" height="78"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Select"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="lKW-OD-IFN" firstAttribute="top" secondItem="MKM-h6-klL" secondAttribute="top" id="3kk-gP-0Nt"/>
+                                        <constraint firstAttribute="bottom" secondItem="HxR-KA-5hx" secondAttribute="bottom" id="BiK-M1-xSo"/>
                                         <constraint firstItem="sgY-CE-8yM" firstAttribute="top" secondItem="MKM-h6-klL" secondAttribute="top" id="Oz7-yW-tzP"/>
+                                        <constraint firstItem="lKW-OD-IFN" firstAttribute="leading" secondItem="sgY-CE-8yM" secondAttribute="trailing" constant="8" id="Tos-jP-HfN"/>
                                         <constraint firstAttribute="bottom" secondItem="lKW-OD-IFN" secondAttribute="bottom" id="coe-w8-dgq"/>
-                                        <constraint firstAttribute="trailing" secondItem="lKW-OD-IFN" secondAttribute="trailing" constant="20" id="iFU-ld-PeX"/>
                                         <constraint firstAttribute="bottom" secondItem="sgY-CE-8yM" secondAttribute="bottom" id="kSQ-RC-wdA"/>
+                                        <constraint firstItem="HxR-KA-5hx" firstAttribute="top" secondItem="MKM-h6-klL" secondAttribute="top" id="nxz-r5-TwT"/>
+                                        <constraint firstItem="HxR-KA-5hx" firstAttribute="leading" secondItem="MKM-h6-klL" secondAttribute="leading" constant="20" id="pYV-ES-qj7"/>
                                         <constraint firstItem="sgY-CE-8yM" firstAttribute="leading" secondItem="HxR-KA-5hx" secondAttribute="trailing" constant="8" id="qas-1H-FIy"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="StudentCell"/>
                                 <connections>
                                     <outlet property="Age" destination="lKW-OD-IFN" id="yDq-Ob-3hg"/>
+                                    <outlet property="Bio" destination="lKW-OD-IFN" id="Wye-UY-pYb"/>
                                     <outlet property="Img" destination="HxR-KA-5hx" id="VAr-Ha-ZTn"/>
                                     <outlet property="Name" destination="sgY-CE-8yM" id="dsV-ht-A68"/>
                                 </connections>
@@ -345,6 +356,7 @@
                             <outlet property="delegate" destination="LCy-HR-q8U" id="Zkw-1e-izD"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="AiW-yh-5dp"/>
                     <connections>
                         <outlet property="StdntTable" destination="zUE-AT-xIr" id="gel-He-XZc"/>
                     </connections>

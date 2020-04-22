@@ -75,6 +75,7 @@
 				C4AFB4CB244CF3FC004B7094 /* SSController.swift */,
 				C4AFB4CD244D1CE2004B7094 /* SettingsController.swift */,
 				C4DA42F4244FA21400600ED1 /* StudentTableController.swift */,
+				C4DA42F2244F999400600ED1 /* StudentCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -104,7 +105,6 @@
 				C496523F2411874C00D819E4 /* AppDelegate.swift */,
 				C49652412411874C00D819E4 /* SceneDelegate.swift */,
 				C49652452411874C00D819E4 /* Main.storyboard */,
-				C4DA42F2244F999400600ED1 /* StudentCell.swift */,
 				C49652482411874E00D819E4 /* Assets.xcassets */,
 				C496524A2411874E00D819E4 /* LaunchScreen.storyboard */,
 				C496524D2411874E00D819E4 /* Info.plist */,

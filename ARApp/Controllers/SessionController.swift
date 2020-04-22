@@ -9,6 +9,7 @@ import UIKit
 
 class SessionController : UIViewController{
     var user:User!
+    var student:User!
     @IBOutlet weak var UserImg: UIImageView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var StudentImg: UIImageView!
@@ -16,6 +17,7 @@ class SessionController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Setting User Image
         UserImg.image = UIImage(named: user.username)
         UserImg.layer.borderWidth = 1
@@ -31,7 +33,7 @@ class SessionController : UIViewController{
         StudentImg.clipsToBounds = true
         //Setting Name
         UserName.text = user.name
-        print(SQLHandler.shared.GetStudents(user: user.username, pass: user.password))
+        //print(SQLHandler.shared.GetStudents(user: user.username, pass: user.password))
         print("Session loaded")
     }
     
@@ -50,7 +52,7 @@ class SessionController : UIViewController{
         //
         if(segue.identifier == "Session2StudentSelect"){
             let table = segue.destination as? StudentTableController
-            table?.students = SQLHandler.shared.GetStudents(user: user.username, pass: <#T##String#>)
+            table?.students = SQLHandler.shared.GetStudents(user: user.username, pass: user.password)
         }
     }
 }

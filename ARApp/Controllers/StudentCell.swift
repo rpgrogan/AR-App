@@ -12,7 +12,4 @@ class StudentCell: UITableViewCell {
     @IBOutlet weak var Img: UIImageView!
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Bio: UILabel!
-    
-    
-    
 }

@@ -10,7 +10,8 @@ import SwiftUI
 
 class StudentTableController : UITableViewController{
     
-    var students:[User]?
+    var user:User!
+    var students:[User]!
     @IBOutlet var StdntTable: UITableView!
     
     override func viewDidLoad() {
@@ -34,4 +35,6 @@ class StudentTableController : UITableViewController{
         cell?.Bio.text = student.bio
         return cell!
     }
+    
+    
 }
