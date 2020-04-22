@@ -7,13 +7,22 @@
 //
 import UIKit
 
-class SessionController : UIViewController{
+
+class SessionController : UIViewController, SetStudentDelegate{
+    func SetStudent(studnt: User, view: StudentTableController) {
+        view.dismiss(animated: true) {
+            self.SetStudent(student: studnt)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     var user:User!
     var student:User!
     @IBOutlet weak var UserImg: UIImageView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var StudentImg: UIImageView!
     @IBOutlet weak var StudentBtn: UIButton!
+    let stdntSelect: StudentTableController = StudentTableController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +46,13 @@ class SessionController : UIViewController{
         print("Session loaded")
     }
     
+    func SetStudent(student: User){
+        self.student = student
+        StudentImg.image = UIImage(named: student.username)
+        StudentBtn.setTitle(student.name, for: .normal)
+        //update other student specific things
+    }
+    
     //Called when student name is pressed
     @IBAction func OnStudentBtnPress(_ sender: UIButton) {
         performSegue(withIdentifier: "Session2StudentSelect", sender: nil)
@@ -52,6 +68,7 @@ class SessionController : UIViewController{
         //
         if(segue.identifier == "Session2StudentSelect"){
             let table = segue.destination as? StudentTableController
+            table?.delegate = self
             table?.students = SQLHandler.shared.GetStudents(user: user.username, pass: user.password)
         }
     }
