@@ -318,7 +318,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-OD-IFN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-OD-IFN" userLabel="Bio">
                                             <rect key="frame" x="281" y="0.0" width="42" height="100"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -345,9 +345,10 @@
                                 <accessibility key="accessibilityConfiguration" identifier="StudentCell"/>
                                 <connections>
                                     <outlet property="Age" destination="lKW-OD-IFN" id="yDq-Ob-3hg"/>
-                                    <outlet property="Bio" destination="lKW-OD-IFN" id="Wye-UY-pYb"/>
+                                    <outlet property="Bio" destination="lKW-OD-IFN" id="if0-YQ-wcn"/>
                                     <outlet property="Img" destination="HxR-KA-5hx" id="VAr-Ha-ZTn"/>
                                     <outlet property="Name" destination="sgY-CE-8yM" id="dsV-ht-A68"/>
+                                    <outlet property="SelectBtn" destination="OWI-GB-Sxf" id="rx7-Y1-aKu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
