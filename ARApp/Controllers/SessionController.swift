@@ -7,15 +7,26 @@
 //
 import UIKit
 
-class SessionController : UIViewController{
+
+class SessionController : UIViewController, SetStudentDelegate{
+    func SetStudent(studnt: User, view: StudentTableController) {
+        view.dismiss(animated: true) {
+            self.SetStudent(student: studnt)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     var user:User!
+    var student:User!
     @IBOutlet weak var UserImg: UIImageView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var StudentImg: UIImageView!
     @IBOutlet weak var StudentBtn: UIButton!
+    let stdntSelect: StudentTableController = StudentTableController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Setting User Image
         UserImg.image = UIImage(named: user.username)
         UserImg.layer.borderWidth = 1
@@ -31,8 +42,15 @@ class SessionController : UIViewController{
         StudentImg.clipsToBounds = true
         //Setting Name
         UserName.text = user.name
-        print(SQLHandler.shared.GetStudents(user: user.username, pass: user.password))
+        //print(SQLHandler.shared.GetStudents(user: user.username, pass: user.password))
         print("Session loaded")
+    }
+    
+    func SetStudent(student: User){
+        self.student = student
+        StudentImg.image = UIImage(named: student.username)
+        StudentBtn.setTitle(student.name, for: .normal)
+        //update other student specific things
     }
     
     //Called when student name is pressed
@@ -50,7 +68,8 @@ class SessionController : UIViewController{
         //
         if(segue.identifier == "Session2StudentSelect"){
             let table = segue.destination as? StudentTableController
-            table?.students = SQLHandler.shared.GetStudents(user: user.username, pass: <#T##String#>)
+            table?.delegate = self
+            table?.students = SQLHandler.shared.GetStudents(user: user.username, pass: user.password)
         }
     }
 }
