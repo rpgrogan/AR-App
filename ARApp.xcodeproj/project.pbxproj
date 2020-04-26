@@ -15,12 +15,11 @@
 		C49652492411874E00D819E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C49652482411874E00D819E4 /* Assets.xcassets */; };
 		C496524C2411874E00D819E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C496524A2411874E00D819E4 /* LaunchScreen.storyboard */; };
 		C4965274241AD7FB00D819E4 /* SQLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4965273241AD7FB00D819E4 /* SQLHandler.swift */; };
-		C4AFB4CC244CF3FC004B7094 /* SSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AFB4CB244CF3FC004B7094 /* SSController.swift */; };
 		C4AFB4CE244D1CE2004B7094 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AFB4CD244D1CE2004B7094 /* SettingsController.swift */; };
 		C4BD60D4241DB388001533BB /* ARController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD60D3241DB388001533BB /* ARController.swift */; };
-		C4BD60D7241DB417001533BB /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD60D6241DB417001533BB /* ARScene.swift */; };
 		C4DA42F3244F999400600ED1 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA42F2244F999400600ED1 /* StudentCell.swift */; };
 		C4DA42F5244FA21400600ED1 /* StudentTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA42F4244FA21400600ED1 /* StudentTableController.swift */; };
+		C4DA42F724561CA600600ED1 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA42F624561CA600600ED1 /* ARView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,12 +46,11 @@
 		C496524B2411874E00D819E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C496524D2411874E00D819E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4965273241AD7FB00D819E4 /* SQLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLHandler.swift; sourceTree = "<group>"; };
-		C4AFB4CB244CF3FC004B7094 /* SSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSController.swift; sourceTree = "<group>"; };
 		C4AFB4CD244D1CE2004B7094 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		C4BD60D3241DB388001533BB /* ARController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARController.swift; sourceTree = "<group>"; };
-		C4BD60D6241DB417001533BB /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		C4DA42F2244F999400600ED1 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 		C4DA42F4244FA21400600ED1 /* StudentTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableController.swift; sourceTree = "<group>"; };
+		C4DA42F624561CA600600ED1 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +70,9 @@
 				C49652432411874C00D819E4 /* LoginController.swift */,
 				C406E7AF241DAFA300A3841C /* SessionController.swift */,
 				C4BD60D3241DB388001533BB /* ARController.swift */,
-				C4AFB4CB244CF3FC004B7094 /* SSController.swift */,
 				C4AFB4CD244D1CE2004B7094 /* SettingsController.swift */,
 				C4DA42F4244FA21400600ED1 /* StudentTableController.swift */,
+				C4DA42F624561CA600600ED1 /* ARView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -99,7 +97,6 @@
 		C496523E2411874C00D819E4 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
-				C4BD60D5241DB401001533BB /* ARScene */,
 				C406E7B1241DB1B800A3841C /* Controllers */,
 				C496523F2411874C00D819E4 /* AppDelegate.swift */,
 				C4DA42F2244F999400600ED1 /* StudentCell.swift */,
@@ -118,14 +115,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C4BD60D5241DB401001533BB /* ARScene */ = {
-			isa = PBXGroup;
-			children = (
-				C4BD60D6241DB417001533BB /* ARScene.swift */,
-			);
-			path = ARScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,15 +191,14 @@
 			files = (
 				C4DA42F5244FA21400600ED1 /* StudentTableController.swift in Sources */,
 				C4AFB4CE244D1CE2004B7094 /* SettingsController.swift in Sources */,
+				C4DA42F724561CA600600ED1 /* ARView.swift in Sources */,
 				C49652442411874C00D819E4 /* LoginController.swift in Sources */,
 				C4965274241AD7FB00D819E4 /* SQLHandler.swift in Sources */,
 				C49652402411874C00D819E4 /* AppDelegate.swift in Sources */,
 				C49652422411874C00D819E4 /* SceneDelegate.swift in Sources */,
 				C4DA42F3244F999400600ED1 /* StudentCell.swift in Sources */,
-				C4BD60D7241DB417001533BB /* ARScene.swift in Sources */,
 				C4BD60D4241DB388001533BB /* ARController.swift in Sources */,
 				C406E7B0241DAFA300A3841C /* SessionController.swift in Sources */,
-				C4AFB4CC244CF3FC004B7094 /* SSController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

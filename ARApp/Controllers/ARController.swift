@@ -17,7 +17,7 @@ enum GameState: Int16 {
     case handwashing
 }
 
-class ViewController: UIViewController {
+class ARController: UIViewController, ARSCNViewDelegate {
 
     var statusText: String = ""
     var tracking: String = ""
@@ -30,10 +30,9 @@ class ViewController: UIViewController {
     //Models
     //var soapBottleNode: SCNNode!
     //var sinkNode: SCNNode!
-    
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var sceneView: ARView!
     @IBOutlet weak var statusLabel: UILabel!
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,70 @@ class ViewController: UIViewController {
 
         statusLabel.text = "View loaded"
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer,
+                  updateAtTime time: TimeInterval) {
+      DispatchQueue.main.async {
+        self.statusLabel.text = self.statusText
+      }
+    }
 
+    func session(_ session: ARSession,
+                 cameraDidChangeTrackingState camera: ARCamera) {
+      switch camera.trackingState {
+      case .notAvailable:
+        statusText = "Tacking Unavailable"
+        break
+      case .normal:
+        statusText = "Tracking..."
+        break
+      case .limited(let reason):
+        switch reason {
+        case .excessiveMotion:
+          statusText = "Too much motion"
+        case .insufficientFeatures:
+          statusText = "Tracking Limited"
+        case .initializing:
+          statusText = "Initializing..."
+        case .relocalizing:
+          statusText = "Relocalizing..."
+        @unknown default:
+          statusText = "Unknown"
+          }
+      }
+    }
+
+    func session(_ session: ARSession,
+                 didFailWithError error: Error) {
+      statusText = "Session Fail: \(error)"
+    }
+
+    func sessionWasInterrupted(_ session: ARSession) {
+      statusText = "Session stopped"
+    }
+
+    func sessionInterruptionEnded(_ session: ARSession) {
+      statusText = "Continuing"
+    }
+
+      func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        DispatchQueue.main.async {
+
+          let planeNode = self.createARPlaneNode(planeAnchor: planeAnchor, color: UIColor.yellow.withAlphaComponent(0.5))
+          node.addChildNode(planeNode)
+        }
+      }
+
+      func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        DispatchQueue.main.async {
+          self.updateARPlaneNode(
+            planeNode: node.childNodes[0],
+            planeAchor: planeAnchor)
+        }
+      }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
@@ -73,7 +135,7 @@ class ViewController: UIViewController {
       sceneView.showsStatistics = true
 
         focusPoint = CGPoint(x: view.center.x, y: view.center.y + view.center.y * 0.25)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)    }
+        NotificationCenter.default.addObserver(self, selector: #selector(ARController.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)    }
 
     func initScene() {
       let scene = SCNScene(named: "Scenes.scnassets/HandwashingDemo.scn")!
@@ -140,70 +202,4 @@ class ViewController: UIViewController {
       planeNode.position = SCNVector3Make(planeAchor.center.x, 0, planeAchor.center.z)
     }
 
-}
-
-extension ViewController : ARSCNViewDelegate {
-
-  func renderer(_ renderer: SCNSceneRenderer,
-                updateAtTime time: TimeInterval) {
-    DispatchQueue.main.async {
-      self.statusLabel.text = self.statusText
-    }
-  }
-
-  func session(_ session: ARSession,
-               cameraDidChangeTrackingState camera: ARCamera) {
-    switch camera.trackingState {
-    case .notAvailable:
-      statusText = "Tacking Unavailable"
-      break
-    case .normal:
-      statusText = "Tracking..."
-      break
-    case .limited(let reason):
-      switch reason {
-      case .excessiveMotion:
-        statusText = "Too much motion"
-      case .insufficientFeatures:
-        statusText = "Tracking Limited"
-      case .initializing:
-        statusText = "Initializing..."
-      case .relocalizing:
-        statusText = "Relocalizing..."
-      @unknown default:
-        statusText = "Unknown"
-        }
-    }
-  }
-
-  func session(_ session: ARSession,
-               didFailWithError error: Error) {
-    statusText = "Session Fail: \(error)"
-  }
-
-  func sessionWasInterrupted(_ session: ARSession) {
-    statusText = "Session stopped"
-  }
-
-  func sessionInterruptionEnded(_ session: ARSession) {
-    statusText = "Continuing"
-  }
-
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-      guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-      DispatchQueue.main.async {
-
-        let planeNode = self.createARPlaneNode(planeAnchor: planeAnchor, color: UIColor.yellow.withAlphaComponent(0.5))
-        node.addChildNode(planeNode)
-      }
-    }
-
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-      guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-      DispatchQueue.main.async {
-        self.updateARPlaneNode(
-          planeNode: node.childNodes[0],
-          planeAchor: planeAnchor)
-      }
-    }
 }
