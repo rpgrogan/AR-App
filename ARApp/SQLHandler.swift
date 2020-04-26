@@ -53,7 +53,7 @@ class SQLHandler{
         //Guardian, can see caretaker, therapist, doctor.
         User(username: "TonyGroves",
              password: "Pass4",
-             name: "Toney Groves",
+             name: "Tony Groves",
             bio: "I have been a father for 9 years. Contact info: (123)-456-789",
             age: 37,
             student: 0),
