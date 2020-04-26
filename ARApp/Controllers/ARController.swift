@@ -138,9 +138,9 @@ class ARController: UIViewController, ARSCNViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(ARController.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)    }
 
     func initScene() {
-      let scene = SCNScene(named: "Scenes.scnassets/HandwashingDemo.scn")!
-      scene.isPaused = false
-      sceneView.scene = scene
+      //let scene = SCNScene(named: "Scenes.scnassets/HandwashingDemo.scn")!
+      //scene.isPaused = false
+      //sceneView.scene = scene
 
         //scene.lightingEnvironment.contents = ""
         //scene.lightingEnvironment.intensity = 1

@@ -414,7 +414,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Lesson" id="LXZ-73-9eK"/>
                     <connections>
-                        <outlet property="scene" destination="5Fg-1x-cMZ" id="G2C-fc-wKA"/>
                         <outlet property="sceneView" destination="5Fg-1x-cMZ" id="tSE-Mv-3GV"/>
                         <outlet property="statusLabel" destination="hci-CR-ry2" id="0aS-Nv-1jZ"/>
                     </connections>
