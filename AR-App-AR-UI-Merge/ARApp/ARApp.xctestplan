@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "E596D79A-7F0A-483A-9E08-FEF5D81AA8A9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ARApp.xcodeproj",
+      "identifier" : "C496523B2411874C00D819E4",
+      "name" : "ARApp"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}
